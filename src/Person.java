@@ -46,7 +46,9 @@ public class Person {
         this.address = address;
     }
     public void happyBirthday() {
-        age = OptionalInt.of(age.getAsInt() + 1);
+        if (hasAge()) {
+            age = OptionalInt.of(age.getAsInt() + 1);
+        }
     }
 
     @Override
@@ -56,7 +58,7 @@ public class Person {
 
     @Override
     public int hashCode() {
-        return Objects.hash(name.hashCode(), surname.hashCode(), age, address.hashCode());
+        return Objects.hash(name.hashCode(), surname.hashCode(), age.hashCode(), address.hashCode());
     }
 
     public PersonBuilder newChildBuilder() {
